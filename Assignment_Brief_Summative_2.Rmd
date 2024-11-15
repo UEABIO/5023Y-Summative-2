@@ -1,6 +1,6 @@
 ---
-title: 'Second Assignment Brief 2024'
-author: 'Lecturer: Philip Leftwich, Module: UEA BIO 5023Y'
+title: 'Assignment Brief'
+author: 'Lecturer: Philip Leftwich, Module: UEA BIO 5027A'
 output: 
   rmdformats::material
   
@@ -18,38 +18,27 @@ knitr::opts_chunk$set(echo = TRUE)
 # 1. Outline
 
 
-You are being given the choice of four possible datasets. 
+You are being given the choice of three possible datasets. 
 
 With your chosen dataset you are tasked with using exploratory data analysis and background reading to develop hypotheses that you will test with robust linear models. You will then write-up and communicate your findings with a clear results section and good data visuals in the style of a paper/lab report.
 
 You only need to analyse one data set, and you do not need to test *everything* within a dataset in order to make an excellent report. Planning and demonstration of thorough analysis of carefully chosen hypotheses with excellent write-ups and clear data visuals, is preferable to trying to study everything!
 
-You have already carried out data cleaning, exploratory analysis and data visualisation in the course of completing your first assignment. This assignment extends that to include background reading and incorporating some simple statistics. 
-
 
 ## Hand-in
 
-### GitHub Repository
+### Repository
 
-Your project on Github should contain the following files:
+Your project on Posit Cloud - it MUST be the Assignment Project in the shared workspace
 
-1) A project README
-2) A well presented R script(s) for data cleaning, exploratory analysis & model building
-3) An Rmd document with outputs only that forms the lab report
-4) The knitted pdf of your lab report
-
-You can make commits and push these at any time up until the assignment deadline. 
-That's all you need to do to save your code for the assignment. 
-Check out this short video for a how-to guide: https://www.youtube.com/watch?v=pAcMgGbCtQw&feature=youtu.be
-
-You should make regular, small and meaningful commits. 
-
-Check you are pushing to GitHub by visiting `Tools > Project options > Git` to get the url of your project on Github.
+1) Well presented R script(s) for data cleaning, exploratory analysis & model building
+2) A Quarto document with outputs only that forms the report
+3) The knitted pdf of your report
 
 
 ### Report
 
-Publish a report (file 4) as a pdf and hand-in through the assignment portal on Blackboard. 
+Publish a report (file 3) as a pdf and hand-in through the assignment portal on Blackboard. 
 
 
 # 2. Information on the datasets
@@ -65,14 +54,8 @@ Choose one data set to work on for your report.
   
   - The deleterious effects of inbreeding on flight performance in the butterfly *Bicyclus anynana*
   
-  - Measuring the effect of the parasitic tapeworm *Schistocephalus solidus* infection in the three-spined stickleback (*Gasterosteus aculeatus*)on the susceptibility to infection from a **second parasite**, the trematode *Diplostomum pseudospathaceum*
-  
-  - Measuring the effect of intervention with a probiotic on abundance of the pathogenic bacterium *Ruminococcus gnavus* in human stool samples.
+  - The effect of an anti-cancer drug on p21 gene expression during the cell cycle
 
-
-  
-
-              
 
 ## 2.2 Some ideas for analysis
 
@@ -113,49 +96,32 @@ A study of the relationship between inbreeding and flight ability.
 |body_part    | Thorax or rest of body  |
 |dry_weight    | The dry weight in (mg) of the part of the butterfly |
 
-### Parasitism in sticklebacks
+### p21 expression
 
-`parasite_exp.csv`
+`Gene_Expression.csv`
 
-| Variable            | Definition                              |
-|---------------------|-----------------------------------------|
-|Fish_ID      | Individual |                      
-|Treatment     | Inbreeding coefficient - three levels indicating the number of generations of sib-matings in recent family history    |
-|Diplo_right_eye    | Number of parasites recovered in right eye  |
-|Diplo_left_eye   | Number of parasites recovered in left eye   |
-|Age_at_dissection   | Age in months |
-|Fish_sex  | male or female|
-
-
-### Probiotics and human pathogenic bacteria
-
-`probiotic.csv`
-
-High-through profiling data from intestinal genus-level bacteria (22 subjects from 2 time points; before and after probiotic/placebo intervention)
-
-There are before and after treatments: think carefully about any data manipulations you might need to do?
+Changes in the expression of p21 can serve as a biomarker for potential treatment efficacy as a sign of induced therapeutic benefits in cancer treatment if it is inducing senescence or apoptosis:
 
 
 | Variable            | Definition                              |
 |---------------------|-----------------------------------------|
-|time    | timepoint 1 = before, 2 = after |                      
-|gender     | F or M, Female or Male    |
-|subject    | subject ID  |
-|group  | Placebo or LGG (probiotic L. rhamnosus GG)   |
-|ruminococcus_gnavus_abund  | Read count abundance of pathogenic bacteria |
+|Cell Cycle Progression     | the progression through the cell cycle, ranging from 0.0 (beginning of the cycle) to 1.0 (completion of the cycle). It serves as a timeline for cellular activities. |                      
+|Treatment     | Control: Cells are left untreated, serving as a baseline for normal gene expression patterns during the cell cycle.
+Treated: Cells are exposed to a specific treatment, potentially affecting gene expression. |   
+|Gene Expression Level    | This quantitative measure indicates the level of expression of a particular gene of interest. Changes in this value may reflect cellular responses to the treatment or inherent variations during the cell cycle.. |  
 
 
 # 3. General guide to the report
 
 - Word limit and document formatting:
 
-    - The report and the appendix R code should be submitted as one pdf document.
+    - The report should be submitted as one pdf document.
 
-    - The maximum length is 1500 words.
+    - The maximum length is 750 words.
     
-    - The 1500 word limit includes: title, main text (results & discussion), conclusion.
+    - The 750 word limit includes: title, main text (stated hypotheses, results & discussion)
 
-    - It does not include: plot legends, the R code in the supplementary methods (submitted separately as your Github classrooms repo) or the references.
+    - It does not include: plot legends, tables or the references.
 
 ## 3.1 Your report MUST have these sections
 
@@ -164,7 +130,7 @@ There are before and after treatments: think carefully about any data manipulati
 
 2. Main text
 
-    - Introduction
+    - Hypotheses
     
     - Analysis
     
@@ -181,10 +147,6 @@ There are before and after treatments: think carefully about any data manipulati
 ### Title
 The title should describe your main question and/or your main result and what species you are using. We encourage interesting and enticing titles.
   
-
-### Introduction
-    
-This section should start with a brief (one-paragraph) introduction section, where you provide a brief background, some context and present your carefully formed hypotheses for testing
 
 ### Analysis
 
@@ -265,12 +227,6 @@ Your figure leged can easily be 100-200 words. It should be succinct but compreh
 ![Figure 1: *Drosophila melanogaster* lifespan increases with body size across three treatments of differing male sexual activity. Fitted model slopes are from the reduced linear model (main effects only of thorax size, sleep and treatment group; adjusted R^2 = 0.59) indicating that every 0.1mm increase in thorax increases longevity by 14.4 days(95% CI 11.8-17.0), lines are regression slopes with 95% confidence intervals, circles are individual data points, colours indicate treatments. Marginal plots are density plot distributions for thorax length (top) and longevity (right) split by treatments.](img/fly.png)
 
 
-### Conclusion
-
-The conclusion should *briefly* reiterate the major findings of the study. Then try and draw some **major** conclusions from across the whole study. 
-What did you learn? How do these findings move the field forwards? What might be the next logical experiments to try? 
-
-Something that a lot of students do is use a single reference that backs up a finding. This is an example of **confirmation bias**. Make sure to try and do an organised literature search and include multiple references - don't only include those which support your argument. 
 
 ### References
 
@@ -287,7 +243,7 @@ articles that are relevant to the topic and your enquiries.
 
 ### Supplementary methods
 
-You will submit your R repo through GitHub classrooms. 
+Your R repo on Posit Cloud will also be marked as part of your assessment. 
 
 - As always code should be completely reproducible.
 
@@ -328,36 +284,28 @@ downloadthis::download_link(
 
 ```{r Mark scheme, echo=FALSE}
 knitr::kable(rbind(
-                    c("","Clear summary of the background to the topic","10","15"),
-                    c("","Cites relevant published articles and reviews","5",""),
-             
-                    c("","Hypothesis-testing evident with result paragraphs following the pattern of: Hypothesis (or question), test, result, conclusion","5","10"),
-                     c("","Writing style is clear, well-referenced, free of spelling/grammar errors and has subheadings","5",""),
-                
-                     c("","Plots are attractive, responsible and clear","10","15"),
-                     c("","Figure legends meaningful & precise","5",""),
-                 
-                     c("","Statistical tests used appropriately (correct tests for the data)","5","15"),
-                    c("","Results are reported with full statistical details & confidence intervals where appropriate","5",""),
+
+                    c("","Hypothesis-testing evident with result paragraphs following the pattern of: Hypothesis (or question), test, result, conclusion","10",""),
+                    c("","Writing clearly includes means, direction with a clear link to biology","5",""),
+                     c("","Writing style is clear, well-referenced, free of spelling/grammar errors and has subheadings","5","20"),
+                     c("","Plots are attractive, responsible and clear","10",""),
+                     c("","Figure legends meaningful & precise","10","20"),
+                     c("","Statistical tests used appropriately (correct tests for the data)","5",""),
+                    c("","Results are reported with full statistical details & confidence intervals where appropriate","10",""),
                     c("","Conclusions/interpretations are well-supported by the data analysis","5",""),
-                    c("","Briefly reiterates the results","1","5"),
-                    c("","Mentions any limitations in data or analysis","2",""),
-                    c("","Meaningful conclusions","2",""),
-                  
+                    c("","Mentions any limitations in data, data cleaning required or limitations in analysis","5","25"),
                     c("","Uses previously published original literature to explain and/or contrast against own analysis","5","5"),
-                    c("","Fully reproducible Markdown document","5","25"),
+                    c("","Fully reproducible Markdown document","10",""),
                     c("","Annotated scripts","5",""),
                     c("","Data cleaning and exploratory data analysis","5",""),
-                    c("","Model assumption checking","5",""),
-                    c("","Clear and useful README","5",""),
-                    c("","Clear and interesting read throughout","5","10"),
-                    c("","Biological insight and/or technical coding skill","5",""),
+                    c("","Model assumption checking","5","25"),
+                     c("","Statement on whether and how generative AI was used","5","5"),
                     c("","","","100")),
               caption = ' ',
               col.names = c("Section", "Marking Guide", "Marks", "Total"),
                            booktabs=T ) %>% 
   kable_styling("striped", full_width=F) %>% 
-  group_rows(index=c("REPORT" = 0, "Introduction"=2,"Main Text"=2, "Plots"=2, " Analysis"=3, "Conclusion"=3, "Literature"=1, "GITHUB"=5,"All sections"=2, " "=1)) %>% 
+  group_rows(index=c("REPORT" = 0, "Writing"=3, "Plots"=2, " Analysis"=4, "Conclusion"=1, "PROJECT"=4, "Declaration"=1, " " =1)) %>% 
 
   column_spec(4, bold=T)
 ```
@@ -403,7 +351,30 @@ Giving yourself more time with the workshop materials & the assignment trends wi
 knitr::include_graphics("img/Rplot01.png")
 ```
 
-# 7. Summative assignment cheat codes
+
+# 7. Appropriate use of AI
+
+Below I have outlined appropriate and inappropriate uses for generative AI tools. Used responsibly these can improve and speed up your work and productivity. But they must be used cautiously, generating code that you do not understand is irresponsible and can lead to incorrect or biased results. 
+
+Generative AI is a fantastic tool, but it is also limited in ways you may not fully appreciate. Most models have been trained on datasets that do not separate peer-reviewed scientific literature from poor quality writing as such they have little quality control. They also learn inefficiently - and therefore lack nuance in understanding and may miss the point. For coding they can reproduce simple code effectively, but can introduce bias when used to make decisions without oversight. They are trained on older data and can therefore introduce bugs or produce code that clearly does not match that taught on this course.
+
+We reserve the right to ask anyone to come to a discussion meeting on their assignment before marks are finalised. Please ask if you would like to clarify any appropriate use cases. 
+
+All uses of generative AI must be declared. 
+
+| Area           | Use Case                           | Allowed                             |Reasoning                             |
+|---------------------|-----------------------------------------|-----------------------------------------|-----------------------------------------|
+|Writing     | Create writing from scratch (ChatGPT, Bard) |   No |      Writing developed from scratch would be plagiarism (not your words) and reduces opportunities for critical thinking |                 
+|    | Reviewing, summarising or synthesising literature |   No | AI is trained on an opaque (unknown) dataset, and is a poor learner - many scientists have reported incorrect summaries of complex ideas and bias | 
+|     | Editing |   Yes | Using AI to improve grammar, clarity of sentences and structure is a great assistance feature - overlaps with Grammarly (provided by the university) | 
+|Coding   | Create code from scratch |   No | Prevents opportunities to learn essential coding skills, often provides incorrect or inefficient code, trained on old versions of R | 
+|  | Build models or exploratory analyses |   No | Will choose routes of investigation without oversight - potentially leading to biased analyses | 
+|  | Debug or check code |   Yes | Can find errors quickly and easily | 
+|  | Annotate code |   Yes | Can improve readability through suggested annotations| 
+
+
+
+# 8. Summative assignment cheat codes
 
 ## Not for students - DO NOT USE! 
 
